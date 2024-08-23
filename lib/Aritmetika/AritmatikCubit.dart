@@ -4,30 +4,53 @@ class Aritmatikcubit extends Cubit<String> {
   //TODO: Mikir caranya jelasin ke pak aji
   //TODO: Selesain sisanya, literally masi WIP :skull:
   Aritmatikcubit()  : super('');
+  String? _operation;
+  double? _angkapertama;
+  double? _angkakedua;
 
-  String _exp = '';
-  void input(String val) {
-    _exp  += val;
-    emit(_exp);
+  void setangkapertama(String value) {
+    _angkapertama = double.tryParse(value);
   }
-  void clear() {
-    _exp  = '';
-    emit(_exp);
+  void setangkakedua(String value) {
+    _angkakedua = double.tryParse(value);
   }
-  void hitung() {
-    //sudah jelas dari nama voidnya
-    try {
-      final hasil = _expEval(_exp);
+  void setoperator(String value) {
+    _operation = value;
+    emit(_operation!);
+  }
+
+  void Hitung() {
+    if (_angkakedua != null && _angkapertama != null && _operation != null) {
+      double hasil;
+      switch (_operation) {
+        case '+':
+          hasil = _angkapertama! + _angkakedua!;
+          break;
+        case '-':
+          hasil = _angkapertama! - _angkakedua!;
+          break;
+        case '*':
+          hasil = _angkapertama! * _angkakedua!;
+          break;
+        case '/':
+          hasil = _angkapertama! / _angkakedua!;
+          break;
+        default:
+          emit('Error');
+          return;
+      }
       emit(hasil.toString());
-    } catch (e){
-      //gunanya untuk throw error logs ketika ga di recognize
-      emit('Error kang');
+    } else {
+      emit('Error');
     }
   }
-  double _expEval(String exp) {
-    //placholder, kemungkinan tambah fitur klo sempet
-    return double.parse(exp);
+
+  void clr() {
+    _angkapertama = null;
+    _angkakedua = null;
+    _operation = null;
+    emit('');
   }
 }
-
+//allahuakbar ternyata pake switch case bisa dong :bruh:
 //author: Bumi Bagus Wiraguna
