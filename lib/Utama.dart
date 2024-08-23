@@ -10,6 +10,13 @@ class mainPage extends StatefulWidget {
 class _mainPageState extends State<mainPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Calculator App"),
+      ),
+      body: Column(
+
+      ),
+    );
   }
 }
