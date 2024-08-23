@@ -1,5 +1,4 @@
 import 'package:cubitflutter/Utama.dart';
-import 'package:cubitflutter/utama.dart';
 import 'package:flutter/material.dart';
 
 void main() {
