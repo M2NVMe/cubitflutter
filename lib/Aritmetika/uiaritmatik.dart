@@ -12,7 +12,9 @@ class Uiaritmatik extends StatelessWidget {
       body:
       Column(
         children: [
-
+          Container(
+            child: Text("Test Page Aritmatika"),
+          )
         ],
       )
       ,
