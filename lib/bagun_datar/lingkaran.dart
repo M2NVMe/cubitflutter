@@ -28,16 +28,20 @@ class LingkaranPage extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 20),
-              BlocBuilder<LingkaranCubit, LingkaranState>(
-                builder: (context, state) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Luas Lingkaran: ${state.area}', style: const TextStyle(fontSize: 18)),
-                      Text('Keliling Lingkaran: ${state.circumference}', style: const TextStyle(fontSize: 18)),
-                    ],
+              Builder(
+                builder: (context) {
+                  return BlocBuilder<LingkaranCubit, LingkaranState>(
+                    builder: (context, state) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Luas Lingkaran: ${state.area}', style: const TextStyle(fontSize: 18)),
+                          Text('Keliling Lingkaran: ${state.circumference}', style: const TextStyle(fontSize: 18)),
+                        ],
+                      );
+                    },
                   );
-                },
+                }
               ),
             ],
           ),

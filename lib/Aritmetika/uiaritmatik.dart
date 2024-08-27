@@ -66,7 +66,9 @@ class _UiaritmatikState extends State<Uiaritmatik> {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => AritmatikCubit()),
+        BlocProvider(create: (context) {
+          return AritmatikCubit();
+        }),
       ],
       child: Scaffold(
         appBar: AppBar(title: Text("Kalkulator Aritmatika")),
