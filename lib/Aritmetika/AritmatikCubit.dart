@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AritmatikCubit extends Cubit {
-  AritmatikCubit() : super('');
+  AritmatikCubit() : super('0');
 
   setOperator(double firstNumber, double secondNumber, double operator) {
     try {
@@ -23,7 +23,7 @@ class AritmatikCubit extends Cubit {
       emit(result.toString());  // Emit the result as double
     } catch (e) {
       // Handle errors, e.g., emit an error value
-      emit('');  // You might want to emit a different value or handle errors differently
+      emit('0');  // You might want to emit a different value or handle errors differently
     }
   }
 }
