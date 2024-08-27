@@ -1,15 +1,63 @@
 import 'package:flutter/material.dart';
+import 'persegi.dart';
+import 'segitiga.dart';
+import 'lingkaran.dart';
+import 'trapesium.dart';
 
-class mainPage extends StatefulWidget {
-  const mainPage({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<mainPage> createState() => _mainPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _mainPageState extends State<mainPage> {
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Perhitungan Bangun Datar'),
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+            title: const Text('Persegi'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PersegiPage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Segitiga'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SegitigaPage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Lingkaran'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LingkaranPage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Trapesium'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const TrapesiumPage()),
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
