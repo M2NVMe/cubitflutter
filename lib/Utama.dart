@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:cubitflutter/Aritmetika/uiaritmatik.dart';
 import 'package:cubitflutter/Reusables/myButton.dart';
+import 'package:cubitflutter/bagun_datar/bangundatar.dart';
 import 'package:flutter/material.dart';
 
 class mainPage extends StatefulWidget {
@@ -16,6 +17,9 @@ class _mainPageState extends State<mainPage> {
 
   void _navigateToAritmatik(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => Uiaritmatik()));
+  }
+  void _navigateToDatar(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainPage()));
   }
 
   @override
@@ -35,7 +39,7 @@ class _mainPageState extends State<mainPage> {
           ),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Keliling bangun datar" ,onPressed: () {},),
+            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Keliling bangun datar" ,onPressed: () {_navigateToDatar(context);},),
           ),
           Container(
             margin: EdgeInsets.all(5),

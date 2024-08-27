@@ -1,10 +1,11 @@
 import 'package:bloc/bloc.dart';
 
-class Aritmatikcubit extends Cubit<String> {
+class AritmatikCubit extends Cubit<String> {
   //TODO: Mikir caranya jelasin ke pak aji
   //TODO: Selesain sisanya, literally masi WIP :skull:
-  Aritmatikcubit()  : super('');
-  void setoperator(String firstNumber, String secondNumber, String operator) {
+  AritmatikCubit()  : super('');
+
+  void setOperator(String firstNumber, String secondNumber, String operator) {
     double num1 = double.tryParse(firstNumber) ?? 0;
     double num2 = double.tryParse(secondNumber) ?? 0;
     double result;
@@ -27,6 +28,7 @@ class Aritmatikcubit extends Cubit<String> {
     }
 
     emit(result.toString());
+    print(result);
   }
 }
 //allahuakbar ternyata pake switch case bisa dong :bruh:

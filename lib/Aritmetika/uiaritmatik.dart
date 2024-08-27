@@ -16,7 +16,6 @@ class Uiaritmatik extends StatelessWidget {
       appBar: AppBar(title: Text("Kalkulator Aritmatika")),
       body: Column(
         children: [
-          Expanded(child: Container()),
           myTextField(
             hintText: "1st Number",
             isObscure: false,
@@ -42,7 +41,7 @@ class Uiaritmatik extends StatelessWidget {
                 elevation: 0,
                 textButton: "+",
                 onPressed: () {
-                  context.read<Aritmatikcubit>().setoperator(
+                  context.read<AritmatikCubit>().setOperator(
                     firstNumberController.text,
                     secondNumberController.text,
                     "+",
@@ -56,7 +55,7 @@ class Uiaritmatik extends StatelessWidget {
                 elevation: 0,
                 textButton: "-",
                 onPressed: () {
-                  context.read<Aritmatikcubit>().setoperator(
+                  context.read<AritmatikCubit>().setOperator(
                     firstNumberController.text,
                     secondNumberController.text,
                     "-",
@@ -70,7 +69,7 @@ class Uiaritmatik extends StatelessWidget {
                 elevation: 0,
                 textButton: "*",
                 onPressed: () {
-                  context.read<Aritmatikcubit>().setoperator(
+                  context.read<AritmatikCubit>().setOperator(
                     firstNumberController.text,
                     secondNumberController.text,
                     "*",
@@ -84,7 +83,7 @@ class Uiaritmatik extends StatelessWidget {
                 elevation: 0,
                 textButton: "/",
                 onPressed: () {
-                  context.read<Aritmatikcubit>().setoperator(
+                  context.read<AritmatikCubit>().setOperator(
                     firstNumberController.text,
                     secondNumberController.text,
                     "/",
@@ -93,16 +92,6 @@ class Uiaritmatik extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
-          BlocBuilder<Aritmatikcubit, String>(
-            builder: (context, result) {
-              return Text(
-                result.isEmpty ? "Result will be shown here" : result,
-                style: TextStyle(fontSize: 20),
-              );
-            },
-          ),
-          Expanded(child: Container()),
         ],
       ),
     );
