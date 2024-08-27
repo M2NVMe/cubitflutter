@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AritmatikCubit extends Cubit {
+class AritmatikCubit extends Cubit  with ChangeNotifier {
   AritmatikCubit() : super('0');
 
   setOperator(double firstNumber, double secondNumber, double operator) {

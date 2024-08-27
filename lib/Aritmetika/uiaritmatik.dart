@@ -42,8 +42,8 @@ class Uiaritmatik extends StatelessWidget {
                 textButton: "+",
                 onPressed: () {
                   try {
-                    final double firstNumber = double.parse(firstNumberController.text);
-                    final double secondNumber = double.parse(secondNumberController.text);
+                    double firstNumber = double.parse(firstNumberController.text);
+                    double secondNumber = double.parse(secondNumberController.text);
                     context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, 1);
                     //ada error di context read
                   } catch (e) {
