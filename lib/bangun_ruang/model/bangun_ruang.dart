@@ -1,3 +1,4 @@
+// lib/model/bangun_ruang.dart
 class Kubus {
   final double sisi;
   Kubus(this.sisi);

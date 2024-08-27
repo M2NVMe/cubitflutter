@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'bangunruang.dart';
-import 'brstate.dart';
+import '../model/bangun_ruang.dart';
+import 'bangun_ruang_state.dart';
 
 class BangunRuangCubit extends Cubit<BangunRuangState> {
   BangunRuangCubit() : super(BangunRuangInitial());
