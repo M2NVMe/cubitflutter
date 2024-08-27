@@ -1,8 +1,8 @@
-// lib/ui/kalkulator_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/bangun_ruang_cubit.dart';
 import '../cubit/bangun_ruang_state.dart';
+import 'package:cubitflutter/Reusables/myButton.dart'; 
 
 class KalkulatorScreen extends StatelessWidget {
   final sisiController = TextEditingController();
@@ -20,62 +20,117 @@ class KalkulatorScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            TextField(
-              controller: sisiController,
-              decoration: InputDecoration(labelText: 'Sisi Kubus'),
-              keyboardType: TextInputType.number,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: TextField(
+                controller: sisiController,
+                decoration: InputDecoration(
+                  labelText: 'Sisi Kubus',
+                  border: OutlineInputBorder(), // Menambahkan outline
+                ),
+                keyboardType: TextInputType.number,
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                final sisi = double.tryParse(sisiController.text) ?? 0;
-                context.read<BangunRuangCubit>().hitungVolumeKubus(sisi);
-              },
-              child: Text('Hitung Volume Kubus'),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: myButton(
+                backgroundColor: Colors.black45,
+                textColor: Colors.white,
+                radius: 5,
+                elevation: 0,
+                textButton: 'Hitung Volume Kubus',
+                onPressed: () {
+                  final sisi = double.tryParse(sisiController.text) ?? 0;
+                  context.read<BangunRuangCubit>().hitungVolumeKubus(sisi);
+                },
+              ),
             ),
-            TextField(
-              controller: panjangController,
-              decoration: InputDecoration(labelText: 'Panjang Balok'),
-              keyboardType: TextInputType.number,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: TextField(
+                controller: panjangController,
+                decoration: InputDecoration(
+                  labelText: 'Panjang Balok',
+                  border: OutlineInputBorder(), 
+                ),
+                keyboardType: TextInputType.number,
+              ),
             ),
-            TextField(
-              controller: lebarController,
-              decoration: InputDecoration(labelText: 'Lebar Balok'),
-              keyboardType: TextInputType.number,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: TextField(
+                controller: lebarController,
+                decoration: InputDecoration(
+                  labelText: 'Lebar Balok',
+                  border: OutlineInputBorder(), 
+                ),
+                keyboardType: TextInputType.number,
+              ),
             ),
-            TextField(
-              controller: tinggiController,
-              decoration: InputDecoration(labelText: 'Tinggi Balok'),
-              keyboardType: TextInputType.number,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: TextField(
+                controller: tinggiController,
+                decoration: InputDecoration(
+                  labelText: 'Tinggi Balok',
+                  border: OutlineInputBorder(), 
+                ),
+                keyboardType: TextInputType.number,
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                final panjang = double.tryParse(panjangController.text) ?? 0;
-                final lebar = double.tryParse(lebarController.text) ?? 0;
-                final tinggi = double.tryParse(tinggiController.text) ?? 0;
-                context.read<BangunRuangCubit>().hitungVolumeBalok(panjang, lebar, tinggi);
-              },
-              child: Text('Hitung Volume Balok'),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: myButton(
+                backgroundColor: Colors.black45,
+                textColor: Colors.white,
+                radius: 5,
+                elevation: 0,
+                textButton: 'Hitung Volume Balok',
+                onPressed: () {
+                  final panjang = double.tryParse(panjangController.text) ?? 0;
+                  final lebar = double.tryParse(lebarController.text) ?? 0;
+                  final tinggi = double.tryParse(tinggiController.text) ?? 0;
+                  context.read<BangunRuangCubit>().hitungVolumeBalok(panjang, lebar, tinggi);
+                },
+              ),
             ),
-            TextField(
-              controller: jariJariController,
-              decoration: InputDecoration(labelText: 'Jari-jari Bola'),
-              keyboardType: TextInputType.number,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: TextField(
+                controller: jariJariController,
+                decoration: InputDecoration(
+                  labelText: 'Jari-jari Bola',
+                  border: OutlineInputBorder(), 
+                ),
+                keyboardType: TextInputType.number,
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                final jariJari = double.tryParse(jariJariController.text) ?? 0;
-                context.read<BangunRuangCubit>().hitungVolumeBola(jariJari);
-              },
-              child: Text('Hitung Volume Bola'),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: myButton(
+                backgroundColor: Colors.black45,
+                textColor: Colors.white,
+                radius: 5,
+                elevation: 0,
+                textButton: 'Hitung Volume Bola',
+                onPressed: () {
+                  final jariJari = double.tryParse(jariJariController.text) ?? 0;
+                  context.read<BangunRuangCubit>().hitungVolumeBola(jariJari);
+                },
+              ),
             ),
-            BlocBuilder<BangunRuangCubit, BangunRuangState>(
-              builder: (context, state) {
-                if (state is BangunRuangCalculated) {
-                  return Text('Volume: ${state.volume}');
-                }
-                return Text('Masukkan nilai untuk menghitung volume');
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: BlocBuilder<BangunRuangCubit, BangunRuangState>(
+                builder: (context, state) {
+                  if (state is BangunRuangCalculated) {
+                    return Text('Volume: ${state.volume}');
+                  }
+                  return Text('Masukkan nilai untuk menghitung volume');
+                },
+              ),
             ),
           ],
         ),
