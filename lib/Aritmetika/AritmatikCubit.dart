@@ -4,51 +4,32 @@ class Aritmatikcubit extends Cubit<String> {
   //TODO: Mikir caranya jelasin ke pak aji
   //TODO: Selesain sisanya, literally masi WIP :skull:
   Aritmatikcubit()  : super('');
-  String? _operation;
-  double? _angkapertama;
-  double? _angkakedua;
+  void setoperator(String firstNumber, String secondNumber, String operator) {
+    double num1 = double.tryParse(firstNumber) ?? 0;
+    double num2 = double.tryParse(secondNumber) ?? 0;
+    double result;
 
-  void setangkapertama(String value) {
-    _angkapertama = double.tryParse(value);
-  }
-  void setangkakedua(String value) {
-    _angkakedua = double.tryParse(value);
-  }
-  void setoperator(String value) {
-    _operation = value;
-    emit(_operation!);
-  }
-
-  void Hitung() {
-    if (_angkakedua != null && _angkapertama != null && _operation != null) {
-      double hasil;
-      switch (_operation) {
-        case '+':
-          hasil = _angkapertama! + _angkakedua!;
-          break;
-        case '-':
-          hasil = _angkapertama! - _angkakedua!;
-          break;
-        case '*':
-          hasil = _angkapertama! * _angkakedua!;
-          break;
-        case '/':
-          hasil = _angkapertama! / _angkakedua!;
-          break;
-        default:
-          emit('Error');
-          return;
-      }
-      emit(hasil.toString());
-    } else {
-      emit('Error');
+    switch (operator) {
+      case '+':
+        result = num1 + num2;
+        break;
+      case '-':
+        result = num1 - num2;
+        break;
+      case '*':
+        result = num1 * num2;
+        break;
+      case '/':
+        result = num2 != 0 ? num1 / num2 : 0;
+        break;
+      default:
+        result = 0;
     }
+
+    emit(result.toString());
   }
 
-  void clr() {
-    _angkapertama = null;
-    _angkakedua = null;
-    _operation = null;
+  void clear() {
     emit('');
   }
 }

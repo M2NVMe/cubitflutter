@@ -10,37 +10,59 @@ class Uiaritmatik extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController firstNumberController = TextEditingController();
+    final TextEditingController secondNumberController = TextEditingController();
     return Scaffold(
       appBar:AppBar(title: Text("Kalkulator Aritmatika"),),
       body:
       Column(
         children: [
           Expanded(child: Container()),
-          myTextField(hintText: "1st Number", isObscure: false, textStyle: TextStyle(fontWeight: FontWeight.normal), rad: 10),
-          myTextField(hintText: "2nd  Number", isObscure: false, textStyle: TextStyle(fontWeight: FontWeight.normal), rad: 10),
+          myTextField(hintText: "1st Number", isObscure: false, textStyle: TextStyle(fontWeight: FontWeight.normal), rad: 10, controller: firstNumberController),
+          myTextField(hintText: "2nd  Number", isObscure: false, textStyle: TextStyle(fontWeight: FontWeight.normal), rad: 10, controller: secondNumberController,),
           SizedBox(height: 20,),
           Row(
             children: [
               Expanded(child: Container()),
               myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "+" ,onPressed: () {
-                context.read<Aritmatikcubit>().setoperator("+");
+                context.read<Aritmatikcubit>().setoperator(
+                  firstNumberController.text,
+                  secondNumberController.text,
+                  "+",
+                );
               },),
               myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "-" ,onPressed: () {
-                context.read<Aritmatikcubit>().setoperator("-");
+                context.read<Aritmatikcubit>().setoperator(
+                  firstNumberController.text,
+                  secondNumberController.text,
+                  "-",
+                );
               },),
               myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "*" ,onPressed: () {
-                context.read<Aritmatikcubit>().setoperator("*");
+                context.read<Aritmatikcubit>().setoperator(
+                  firstNumberController.text,
+                  secondNumberController.text,
+                  "*",
+                );
               },),
               myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "/" ,onPressed: () {
-                context.read<Aritmatikcubit>().setoperator("/");
+                context.read<Aritmatikcubit>().setoperator(
+                  firstNumberController.text,
+                  secondNumberController.text,
+                  "/",
+                );
               },),
               Expanded(child: Container()),
             ],
           ),
           Expanded(child: Container()),
-          Text("Hasil",
-            style:
-            TextStyle(fontSize: 20),
+          BlocBuilder<Aritmatikcubit, String>(
+            builder: (context, result) {
+              return Text(
+                result,
+                style: TextStyle(fontSize: 20),
+              );
+            },
           ),
           Expanded(child: Container()),
         ],
