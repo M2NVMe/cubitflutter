@@ -16,10 +16,13 @@ class _mainPageState extends State<mainPage> {
   //gunanya untuk ganti screen ke page yang di tuju
 
   void _navigateToAritmatik(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Uiaritmatik()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => Uiaritmatik()));
   }
+
   void _navigateToDatar(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainPage()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => MainPage()));
   }
 
   @override
@@ -35,19 +38,51 @@ class _mainPageState extends State<mainPage> {
           Expanded(child: Container()),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Aritmatik" ,onPressed: () {_navigateToAritmatik(context);},),
+            child: myButton(
+              backgroundColor: Colors.black45,
+              textColor: Colors.white,
+              radius: 5,
+              elevation: 0,
+              textButton: "Aritmatik",
+              onPressed: () {
+                _navigateToAritmatik(context);
+              },
+            ),
           ),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Keliling bangun datar" ,onPressed: () {_navigateToDatar(context);},),
+            child: myButton(
+              backgroundColor: Colors.black45,
+              textColor: Colors.white,
+              radius: 5,
+              elevation: 0,
+              textButton: "Keliling bangun datar",
+              onPressed: () {
+                _navigateToDatar(context);
+              },
+            ),
           ),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Keliling bangun ruang" ,onPressed: () {},),
+            child: myButton(
+              backgroundColor: Colors.black45,
+              textColor: Colors.white,
+              radius: 5,
+              elevation: 0,
+              textButton: "Keliling bangun ruang",
+              onPressed: () {},
+            ),
           ),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Bilangan Pangkat" ,onPressed: () {},),
+            child: myButton(
+              backgroundColor: Colors.black45,
+              textColor: Colors.white,
+              radius: 5,
+              elevation: 0,
+              textButton: "Bilangan Pangkat",
+              onPressed: () {},
+            ),
           ),
           Expanded(child: Container()),
         ],
