@@ -1,30 +1,38 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AritmatikCubit extends Cubit  with ChangeNotifier {
-  AritmatikCubit() : super('0');
+enum Operator { add, subtract, multiply, divide }
 
-  setOperator(double firstNumber, double secondNumber, double operator) {
+class AritmatikCubit extends Cubit<String> {
+  AritmatikCubit() : super('0') {
+    print("AritmatikCubit Initialized");
+  }
+
+  setOperator(double firstNumber, double secondNumber, Operator operator) {
     try {
       double result;
 
-      if (operator == 1) {
-        result = firstNumber + secondNumber;
-      } else if (operator == 2) {
-        result = firstNumber - secondNumber;
-      } else if (operator == 3) {
-        result = firstNumber * secondNumber;
-      } else if (operator == 4) {
-        result = secondNumber != 0 ? firstNumber / secondNumber : 0;
-      } else {
-        result = 0;  // Handle unexpected operators
+      switch (operator) {
+        case Operator.add:
+          result = firstNumber + secondNumber;
+          break;
+        case Operator.subtract:
+          result = firstNumber - secondNumber;
+          break;
+        case Operator.multiply:
+          result = firstNumber * secondNumber;
+          break;
+        case Operator.divide:
+          if (secondNumber == 0) {
+            emit('Error: Division by zero');
+            return;
+          }
+          result = firstNumber / secondNumber;
+          break;
       }
 
-      emit(result.toString());  // Emit the result as double
+      emit(result.toString());
     } catch (e) {
-      // Handle errors, e.g., emit an error value
-      emit('0');  // You might want to emit a different value or handle errors differently
+      emit('Error: Invalid operation');
     }
   }
 }
