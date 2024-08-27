@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AritmatikCubit extends Cubit<double> {
-  AritmatikCubit() : super(0.0);
+class AritmatikCubit extends Cubit {
+  AritmatikCubit() : super('');
 
-  void setOperator(double firstNumber, double secondNumber, double operator) {
+  setOperator(double firstNumber, double secondNumber, double operator) {
     try {
       double result;
 
@@ -20,10 +20,10 @@ class AritmatikCubit extends Cubit<double> {
         result = 0;  // Handle unexpected operators
       }
 
-      emit(result);  // Emit the result as double
+      emit(result.toString());  // Emit the result as double
     } catch (e) {
       // Handle errors, e.g., emit an error value
-      emit(0.0);  // You might want to emit a different value or handle errors differently
+      emit('');  // You might want to emit a different value or handle errors differently
     }
   }
 }
