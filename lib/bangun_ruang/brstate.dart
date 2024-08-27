@@ -1,4 +1,3 @@
-part of 'brcubit.dart';
 
 
 abstract class BangunRuangState {}

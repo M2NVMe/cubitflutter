@@ -3,7 +3,6 @@ import 'package:meta/meta.dart';
 import 'bangunruang.dart';
 import 'brstate.dart';
 
-
 class BangunRuangCubit extends Cubit<BangunRuangState> {
   BangunRuangCubit() : super(BangunRuangInitial());
 
