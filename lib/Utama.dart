@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cubitflutter/Aritmetika/uiaritmatik.dart';
 import 'package:cubitflutter/Reusables/myButton.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,12 @@ class mainPage extends StatefulWidget {
 }
 
 class _mainPageState extends State<mainPage> {
+  //gunanya untuk ganti screen ke page yang di tuju
+
+  void _navigateToAritmatik(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Uiaritmatik()));
+  }
+
   @override
   Widget build(BuildContext context) {
     //FlutterView view = WidgetsBinding.instance.platformDispatcher.views.first;
@@ -24,7 +31,7 @@ class _mainPageState extends State<mainPage> {
           Expanded(child: Container()),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Aritmatik" ,onPressed: () {},),
+            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Aritmatik" ,onPressed: () {_navigateToAritmatik(context);},),
           ),
           Container(
             margin: EdgeInsets.all(5),
