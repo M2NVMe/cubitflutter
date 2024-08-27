@@ -44,7 +44,8 @@ class Uiaritmatik extends StatelessWidget {
                   try {
                     final double firstNumber = double.parse(firstNumberController.text);
                     final double secondNumber = double.parse(secondNumberController.text);
-                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, "+");
+                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, 1);
+                    //ada error di context read
                   } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -64,7 +65,7 @@ class Uiaritmatik extends StatelessWidget {
                   try {
                     final double firstNumber = double.parse(firstNumberController.text);
                     final double secondNumber = double.parse(secondNumberController.text);
-                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, "-");
+                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, 2);
                   } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -84,7 +85,7 @@ class Uiaritmatik extends StatelessWidget {
                   try {
                     final double firstNumber = double.parse(firstNumberController.text);
                     final double secondNumber = double.parse(secondNumberController.text);
-                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, "*");
+                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, 3);
                   } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -104,7 +105,7 @@ class Uiaritmatik extends StatelessWidget {
                   try {
                     final double firstNumber = double.parse(firstNumberController.text);
                     final double secondNumber = double.parse(secondNumberController.text);
-                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, "/");
+                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, 4);
                   } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -115,19 +116,6 @@ class Uiaritmatik extends StatelessWidget {
                 },
               ),
             ],
-          ),
-          BlocListener<AritmatikCubit, String>( // Listen to AritmatikCubit
-            listener: (context, state) {
-              if (state != '') {
-                // Show answer using a SnackBar or Text widget
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Hasil: $state'),
-                  ),
-                );
-              }
-            },
-            child: SizedBox(), // Empty child for the listener
           ),
         ],
       ),
