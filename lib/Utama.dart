@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:cubitflutter/Aritmetika/uiaritmatik.dart';
 import 'package:cubitflutter/Reusables/myButton.dart';
+import 'package:cubitflutter/bangun_ruang/ui/kalkulator_screen.dart'; 
 import 'package:flutter/material.dart';
 
 class mainPage extends StatefulWidget {
@@ -12,16 +13,18 @@ class mainPage extends StatefulWidget {
 }
 
 class _mainPageState extends State<mainPage> {
-  //gunanya untuk ganti screen ke page yang di tuju
-
+  // Metode navigasi ke layar Aritmatik
   void _navigateToAritmatik(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => Uiaritmatik()));
   }
 
+  // Metode navigasi ke layar Kalkulator Bangun Ruang
+  void _navigateToBangunRuang(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => KalkulatorScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
-    //FlutterView view = WidgetsBinding.instance.platformDispatcher.views.first;
-    //Size size = view.physicalSize;
     return Scaffold(
       appBar: AppBar(
         title: Text("Calculator App"),
@@ -31,19 +34,51 @@ class _mainPageState extends State<mainPage> {
           Expanded(child: Container()),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Aritmatik" ,onPressed: () {_navigateToAritmatik(context);},),
+            child: myButton(
+              backgroundColor: Colors.black45, 
+              textColor: Colors.white, 
+              radius: 5,
+              elevation: 0, 
+              textButton: "Aritmatik",
+              onPressed: () {
+                _navigateToAritmatik(context);
+              },
+            ),
           ),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Keliling bangun datar" ,onPressed: () {},),
+            child: myButton(
+              backgroundColor: Colors.black45, 
+              textColor: Colors.white, 
+              radius: 5,
+              elevation: 0, 
+              textButton: "Keliling bangun datar",
+              onPressed: () {},
+            ),
           ),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Keliling bangun ruang" ,onPressed: () {},),
+            child: myButton(
+              backgroundColor: Colors.black45, 
+              textColor: Colors.white, 
+              radius: 5,
+              elevation: 0, 
+              textButton: "Keliling bangun ruang",
+              onPressed: () {
+                _navigateToBangunRuang(context); 
+              },
+            ),
           ),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Bilangan Pangkat" ,onPressed: () {},),
+            child: myButton(
+              backgroundColor: Colors.black45, 
+              textColor: Colors.white, 
+              radius: 5,
+              elevation: 0, 
+              textButton: "Bilangan Pangkat",
+              onPressed: () {},
+            ),
           ),
           Expanded(child: Container()),
         ],

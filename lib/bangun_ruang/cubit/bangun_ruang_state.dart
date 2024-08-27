@@ -1,5 +1,6 @@
+import 'package:flutter/foundation.dart';
 
-
+@immutable
 abstract class BangunRuangState {}
 
 class BangunRuangInitial extends BangunRuangState {}
