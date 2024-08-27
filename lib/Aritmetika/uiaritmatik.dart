@@ -41,11 +41,17 @@ class Uiaritmatik extends StatelessWidget {
                 elevation: 0,
                 textButton: "+",
                 onPressed: () {
-                  context.read<AritmatikCubit>().setOperator(
-                    firstNumberController.text,
-                    secondNumberController.text,
-                    "+",
-                  );
+                  try {
+                    final double firstNumber = double.parse(firstNumberController.text);
+                    final double secondNumber = double.parse(secondNumberController.text);
+                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, "+");
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Invalid input. Please enter numbers only."),
+                      ),
+                    );
+                  }
                 },
               ),
               myButton(
@@ -55,11 +61,17 @@ class Uiaritmatik extends StatelessWidget {
                 elevation: 0,
                 textButton: "-",
                 onPressed: () {
-                  context.read<AritmatikCubit>().setOperator(
-                    firstNumberController.text,
-                    secondNumberController.text,
-                    "-",
-                  );
+                  try {
+                    final double firstNumber = double.parse(firstNumberController.text);
+                    final double secondNumber = double.parse(secondNumberController.text);
+                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, "-");
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Invalid input. Please enter numbers only."),
+                      ),
+                    );
+                  }
                 },
               ),
               myButton(
@@ -69,11 +81,17 @@ class Uiaritmatik extends StatelessWidget {
                 elevation: 0,
                 textButton: "*",
                 onPressed: () {
-                  context.read<AritmatikCubit>().setOperator(
-                    firstNumberController.text,
-                    secondNumberController.text,
-                    "*",
-                  );
+                  try {
+                    final double firstNumber = double.parse(firstNumberController.text);
+                    final double secondNumber = double.parse(secondNumberController.text);
+                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, "*");
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Invalid input. Please enter numbers only."),
+                      ),
+                    );
+                  }
                 },
               ),
               myButton(
@@ -83,11 +101,17 @@ class Uiaritmatik extends StatelessWidget {
                 elevation: 0,
                 textButton: "/",
                 onPressed: () {
-                  context.read<AritmatikCubit>().setOperator(
-                    firstNumberController.text,
-                    secondNumberController.text,
-                    "/",
-                  );
+                  try {
+                    final double firstNumber = double.parse(firstNumberController.text);
+                    final double secondNumber = double.parse(secondNumberController.text);
+                    context.read<AritmatikCubit>().setOperator(firstNumber, secondNumber, "/");
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Invalid input. Please enter numbers only."),
+                      ),
+                    );
+                  }
                 },
               ),
             ],

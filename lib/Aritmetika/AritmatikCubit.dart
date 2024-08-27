@@ -5,9 +5,9 @@ class AritmatikCubit extends Cubit<String> {
   //TODO: Selesain sisanya, literally masi WIP :skull:
   AritmatikCubit()  : super('');
 
-  void setOperator(String firstNumber, String secondNumber, String operator) {
-    double num1 = double.tryParse(firstNumber) ?? 0;
-    double num2 = double.tryParse(secondNumber) ?? 0;
+  void setOperator(double firstNumber, double secondNumber, String operator) {
+    double num1 = firstNumber;
+    double num2 = secondNumber;
     double result;
 
     switch (operator) {
