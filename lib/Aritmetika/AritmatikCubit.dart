@@ -10,27 +10,23 @@ class Aritmatikcubit extends Cubit<String> {
     double result;
 
     switch (operator) {
-      case '+':
+      case "+":
         result = num1 + num2;
         break;
-      case '-':
+      case "-":
         result = num1 - num2;
         break;
-      case '*':
+      case "*":
         result = num1 * num2;
         break;
-      case '/':
-        result = num2 != 0 ? num1 / num2 : 0;
+      case "/":
+        result = num2 != 0 ? num1 / num2 : 0; // Avoid division by zero
         break;
       default:
         result = 0;
     }
 
     emit(result.toString());
-  }
-
-  void clear() {
-    emit('');
   }
 }
 //allahuakbar ternyata pake switch case bisa dong :bruh:
