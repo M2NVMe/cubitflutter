@@ -116,6 +116,19 @@ class Uiaritmatik extends StatelessWidget {
               ),
             ],
           ),
+          BlocListener<AritmatikCubit, String>( // Listen to AritmatikCubit
+            listener: (context, state) {
+              if (state != '') {
+                // Show answer using a SnackBar or Text widget
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Hasil: $state'),
+                  ),
+                );
+              }
+            },
+            child: SizedBox(), // Empty child for the listener
+          ),
         ],
       ),
     );
