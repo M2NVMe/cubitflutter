@@ -3,6 +3,7 @@ import 'package:cubitflutter/Reusables/myTextfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'AritmatikCubit.dart';
+import 'ResultPage.dart';
 
 enum Operator { add, subtract, multiply, divide }
 
@@ -11,7 +12,7 @@ class AritmatikCubit extends Cubit<String> {
     print("AritmatikCubit Initialized");
   }
 
-  setOperator(double firstNumber, double secondNumber, Operator operator) {
+  void setOperator(double firstNumber, double secondNumber, Operator operator) {
     try {
       double result;
 
@@ -26,7 +27,6 @@ class AritmatikCubit extends Cubit<String> {
           result = firstNumber * secondNumber;
           break;
         case Operator.divide:
-
           if (secondNumber == 0) {
             emit('Error: Division by zero');
             return;
@@ -41,6 +41,7 @@ class AritmatikCubit extends Cubit<String> {
     }
   }
 }
+
 class Uiaritmatik extends StatefulWidget {
   const Uiaritmatik({super.key});
 
@@ -51,25 +52,18 @@ class Uiaritmatik extends StatefulWidget {
 class _UiaritmatikState extends State<Uiaritmatik> {
   final TextEditingController firstNumberController = TextEditingController();
   final TextEditingController secondNumberController = TextEditingController();
-  String
-  result = '0'; // Initialize result to '0'
 
-  void updateResult(String newResult) {
-    setState(() {
-      result = newResult;
-    });
+  @override
+  void dispose() {
+    firstNumberController.dispose();
+    secondNumberController.dispose();
+    super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    final TextEditingController firstNumberController = TextEditingController();
-    final TextEditingController secondNumberController = TextEditingController();
-
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) {
-          return AritmatikCubit();
-        }),
-      ],
+    return BlocProvider(
+      create: (context) => AritmatikCubit(),
       child: Scaffold(
         appBar: AppBar(title: Text("Kalkulator Aritmatika")),
         body: Column(
@@ -99,23 +93,7 @@ class _UiaritmatikState extends State<Uiaritmatik> {
                   elevation: 0,
                   textButton: "+",
                   onPressed: () {
-                    final cubit = context.read<AritmatikCubit>();
-                    try {
-                      double firstNumber = double.parse(firstNumberController.text);
-                      double secondNumber = double.parse(secondNumberController.text);
-                      cubit.setOperator(firstNumber, secondNumber, Operator.add);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("sukses!"),
-                          ),
-                      );
-                    } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(e.toString()),
-                        ),
-                      );
-                    }
+                    _calculateAndNavigate(context, Operator.add);
                   },
                 ),
                 myButton(
@@ -125,18 +103,7 @@ class _UiaritmatikState extends State<Uiaritmatik> {
                   elevation: 0,
                   textButton: "-",
                   onPressed: () {
-                    final cubit = context.read<AritmatikCubit>();
-                    try {
-                      final double firstNumber = double.parse(firstNumberController.text);
-                      final double secondNumber = double.parse(secondNumberController.text);
-                      cubit.setOperator(firstNumber, secondNumber, Operator.subtract);
-                    } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(e.toString()),
-                        ),
-                      );
-                    }
+                    _calculateAndNavigate(context, Operator.subtract);
                   },
                 ),
                 myButton(
@@ -146,18 +113,7 @@ class _UiaritmatikState extends State<Uiaritmatik> {
                   elevation: 0,
                   textButton: "*",
                   onPressed: () {
-                    final cubit = context.read<AritmatikCubit>();
-                    try {
-                      final double firstNumber = double.parse(firstNumberController.text);
-                      final double secondNumber = double.parse(secondNumberController.text);
-                      cubit.setOperator(firstNumber, secondNumber, Operator.multiply);
-                    } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(e.toString()),
-                        ),
-                      );
-                    }
+                    _calculateAndNavigate(context, Operator.multiply);
                   },
                 ),
                 myButton(
@@ -167,18 +123,7 @@ class _UiaritmatikState extends State<Uiaritmatik> {
                   elevation: 0,
                   textButton: "/",
                   onPressed: () {
-                    final cubit = context.read<AritmatikCubit>();
-                    try {
-                      final double firstNumber = double.parse(firstNumberController.text);
-                      final double secondNumber = double.parse(secondNumberController.text);
-                      cubit.setOperator(firstNumber, secondNumber, Operator.divide);
-                    } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(e.toString()),
-                        ),
-                      );
-                    }
+                    _calculateAndNavigate(context, Operator.divide);
                   },
                 ),
               ],
@@ -187,5 +132,26 @@ class _UiaritmatikState extends State<Uiaritmatik> {
         ),
       ),
     );
+  }
+
+  void _calculateAndNavigate(BuildContext context, Operator operator) {
+    final cubit = context.read<AritmatikCubit>();
+    try {
+      final double firstNumber = double.parse(firstNumberController.text);
+      final double secondNumber = double.parse(secondNumberController.text);
+      cubit.setOperator(firstNumber, secondNumber, operator);
+
+      // Navigate to the ResultPage
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ResultPage()),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error: Invalid input'),
+        ),
+      );
+    }
   }
 }
