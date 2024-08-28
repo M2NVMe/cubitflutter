@@ -1,3 +1,5 @@
+import 'package:cubitflutter/Aritmetika/AritmatikBloc.dart';
+import 'package:cubitflutter/Aritmetika/AritmatikEvent.dart';
 import 'package:cubitflutter/Reusables/myButton.dart';
 import 'package:cubitflutter/Reusables/myTextfield.dart';
 import 'package:flutter/material.dart';
@@ -6,41 +8,6 @@ import 'AritmatikCubit.dart';
 import 'ResultPage.dart';
 
 enum Operator { add, subtract, multiply, divide }
-
-class AritmatikCubit extends Cubit<String> {
-  AritmatikCubit() : super('0') {
-    print("AritmatikCubit Initialized");
-  }
-
-  void setOperator(double firstNumber, double secondNumber, Operator operator) {
-    try {
-      double result;
-
-      switch (operator) {
-        case Operator.add:
-          result = firstNumber + secondNumber;
-          break;
-        case Operator.subtract:
-          result = firstNumber - secondNumber;
-          break;
-        case Operator.multiply:
-          result = firstNumber * secondNumber;
-          break;
-        case Operator.divide:
-          if (secondNumber == 0) {
-            emit('Error: Division by zero');
-            return;
-          }
-          result = firstNumber / secondNumber;
-          break;
-      }
-
-      emit(result.toString());
-    } catch (e) {
-      emit('Error: Invalid operation');
-    }
-  }
-}
 
 class Uiaritmatik extends StatefulWidget {
   const Uiaritmatik({super.key});
@@ -63,7 +30,7 @@ class _UiaritmatikState extends State<Uiaritmatik> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AritmatikCubit(),
+      create: (context) => AritmatikBloc(),
       child: Scaffold(
         appBar: AppBar(title: Text("Kalkulator Aritmatika")),
         body: Column(
@@ -135,18 +102,18 @@ class _UiaritmatikState extends State<Uiaritmatik> {
   }
 
   void _calculateAndNavigate(BuildContext context, Operator operator) {
-    final cubit = context.read<AritmatikCubit>();
-    try {
-      final double firstNumber = double.parse(firstNumberController.text);
-      final double secondNumber = double.parse(secondNumberController.text);
-      cubit.setOperator(firstNumber, secondNumber, operator);
+    final firstNumber = double.tryParse(firstNumberController.text);
+    final secondNumber = double.tryParse(secondNumberController.text);
+
+    if (firstNumber != null && secondNumber != null) {
+      context.read<AritmatikBloc>().add(Calculate(firstNumber, secondNumber, operator));
 
       // Navigate to the ResultPage
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => ResultPage()),
       );
-    } catch (e) {
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error: Invalid input'),
