@@ -1,13 +1,9 @@
-import 'package:cubitflutter/Aritmetika/AritmatikCubit.dart';
 import 'package:cubitflutter/Utama.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 void main() {
   runApp(
-    BlocProvider(
-      create: (context) => AritmatikCubit(),
-      child: MyApp(),
-    ),
+    MyApp(),
   );
 }
 class MyApp extends StatelessWidget {
