@@ -23,9 +23,8 @@ class PerpangkatanUI extends StatelessWidget {
             return Column(
               children: [
                 Expanded(child: Container()),
-                Row(
+                Column(
                   children: [
-                    Expanded(child: Container()),
                     myTextField(
                       hintText: "Primary Number",
                       isObscure: false,
@@ -40,7 +39,6 @@ class PerpangkatanUI extends StatelessWidget {
                       rad: 10,
                       controller: exponentController,
                     ),
-                    Expanded(child: Container()),
                   ],
                 ),
                 SizedBox(height: 20),
