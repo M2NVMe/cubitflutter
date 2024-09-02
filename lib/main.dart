@@ -1,5 +1,5 @@
 import 'package:cubitflutter/Aritmetika/KalkCubit.dart';
-import 'package:cubitflutter/Pangkat/perpangkatanUI.dart';
+import 'package:cubitflutter/Pangkat/perpangkatanCubit.dart';
 import 'package:cubitflutter/Utama.dart';
 import 'package:cubitflutter/bagun_datar/lingkaran_cubit.dart';
 import 'package:cubitflutter/bagun_datar/persegi_cubit.dart';
