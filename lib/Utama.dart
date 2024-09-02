@@ -29,7 +29,7 @@ class _mainPageState extends State<mainPage> {
   }
 
   void _navigateToPangkat(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => perpangkatanUI()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => PerpangkatanUI()));
   }
 
   @override
