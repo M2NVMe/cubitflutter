@@ -1,10 +1,6 @@
 import 'package:cubitflutter/Aritmetika/KalkCubit.dart';
 import 'package:cubitflutter/Pangkat/perpangkatanUI.dart';
 import 'package:cubitflutter/Utama.dart';
-import 'package:cubitflutter/bagun_datar/lingkaran_cubit.dart';
-import 'package:cubitflutter/bagun_datar/persegi_cubit.dart';
-import 'package:cubitflutter/bagun_datar/segitiga_cubit.dart';
-import 'package:cubitflutter/bagun_datar/trapesium_cubit.dart';
 import 'package:cubitflutter/bangun_ruang/cubit/bangun_ruang_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +19,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //TODO: mencoba utk implement blocprovider apalah itu disini, barangkali  perlu gituan (source:  https://createthrive.com/blog/introduction-to-cubit-101-learning-the-basics)
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => BangunRuangCubit()), BlocProvider(create: (context) => PersegiCubit()), BlocProvider(create: (context) => SegitigaCubit()), BlocProvider(create: (context) => TrapesiumCubit()), BlocProvider(create: (context) => LingkaranCubit()), BlocProvider(create: (context) => Aritmatikcubit()),BlocProvider(create: (context) => perpangkatanCubit())],
+      providers: [
+        BlocProvider(create: (context) => BangunRuangCubit()),
+        BlocProvider(create: (context) => Aritmatikcubit()),
+        BlocProvider(create: (context) => perpangkatanCubit())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Kelompok 8',
