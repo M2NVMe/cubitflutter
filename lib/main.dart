@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //TODO: mencoba utk implement blocprovider apalah itu disini, barangkali  perlu gituan (source:  https://createthrive.com/blog/introduction-to-cubit-101-learning-the-basics)
+    //oke sip
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => BangunRuangCubit()),
