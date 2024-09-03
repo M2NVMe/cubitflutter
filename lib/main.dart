@@ -19,15 +19,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //TODO: mencoba utk implement blocprovider apalah itu disini, barangkali  perlu gituan (source:  https://createthrive.com/blog/introduction-to-cubit-101-learning-the-basics)
     return MultiBlocProvider(
-<<<<<<< HEAD
       providers: [
         BlocProvider(create: (context) => BangunRuangCubit()),
         BlocProvider(create: (context) => Aritmatikcubit()),
-        BlocProvider(create: (context) => perpangkatanCubit())
+        BlocProvider(create: (context) => PerpangkatanCubit())
       ],
-=======
-      providers: [BlocProvider(create: (context) => BangunRuangCubit()), BlocProvider(create: (context) => PersegiCubit()), BlocProvider(create: (context) => SegitigaCubit()), BlocProvider(create: (context) => TrapesiumCubit()), BlocProvider(create: (context) => LingkaranCubit()), BlocProvider(create: (context) => Aritmatikcubit()),BlocProvider(create: (context) => PerpangkatanCubit())],
->>>>>>> 20529cc5164a828a502f774ef9fc7fc5b5a84079
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Kelompok 8',

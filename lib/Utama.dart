@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:cubitflutter/Aritmetika/KalkulatorUI.dart';
 import 'package:cubitflutter/Pangkat/perpangkatanUI.dart';
 import 'package:cubitflutter/Reusables/myButton.dart';
-import 'package:cubitflutter/bagun_datar/bangundatar.dart';
 import 'package:cubitflutter/bangun_ruang/ui/kalkulator_screen.dart'; 
 import 'package:flutter/material.dart';
 
@@ -16,9 +15,9 @@ class mainPage extends StatefulWidget {
 class _mainPageState extends State<mainPage> {
   // Metode navigasi ke layar Aritmatik
 
-  void _navigateToDatar(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainPage()));
-  }
+  //void _navigateToDatar(BuildContext context) {
+    //Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainPage()));
+ // }
 
   void _navigateToRuang(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => KalkulatorScreen()));
@@ -47,7 +46,7 @@ class _mainPageState extends State<mainPage> {
           ),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Keliling bangun datar" ,onPressed: () {_navigateToDatar(context);},),
+            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Keliling bangun datar" ,onPressed: () {},),
           ),
           Container(
             margin: EdgeInsets.all(5),
