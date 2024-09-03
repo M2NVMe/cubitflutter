@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/bangun_ruang_cubit.dart';
 import '../cubit/bangun_ruang_state.dart';
 import 'package:cubitflutter/Reusables/myButton.dart';
+import 'package:cubitflutter/Reusables/myTextField.dart'; 
 
 class KalkulatorScreen extends StatelessWidget {
   final sisiController = TextEditingController();
@@ -22,16 +23,12 @@ class KalkulatorScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextField(
-                controller: sisiController,
-                decoration: InputDecoration(
-                  labelText: 'Sisi Kubus',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.number,
-              ),
+            myTextField(
+              hintText: 'Sisi Kubus',
+              isObscure: false,
+              textStyle: TextStyle(fontSize: 16, color: Colors.black),
+              rad: 5.0,
+              controller: sisiController,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -53,38 +50,26 @@ class KalkulatorScreen extends StatelessWidget {
                 },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextField(
-                controller: panjangController,
-                decoration: InputDecoration(
-                  labelText: 'Panjang Balok',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.number,
-              ),
+            myTextField(
+              hintText: 'Panjang Balok',
+              isObscure: false,
+              textStyle: TextStyle(fontSize: 16, color: Colors.black),
+              rad: 5.0,
+              controller: panjangController,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextField(
-                controller: lebarController,
-                decoration: InputDecoration(
-                  labelText: 'Lebar Balok',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.number,
-              ),
+            myTextField(
+              hintText: 'Lebar Balok',
+              isObscure: false,
+              textStyle: TextStyle(fontSize: 16, color: Colors.black),
+              rad: 5.0,
+              controller: lebarController,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextField(
-                controller: tinggiController,
-                decoration: InputDecoration(
-                  labelText: 'Tinggi Balok',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.number,
-              ),
+            myTextField(
+              hintText: 'Tinggi Balok',
+              isObscure: false,
+              textStyle: TextStyle(fontSize: 16, color: Colors.black),
+              rad: 5.0,
+              controller: tinggiController,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -108,16 +93,12 @@ class KalkulatorScreen extends StatelessWidget {
                 },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextField(
-                controller: jariJariController,
-                decoration: InputDecoration(
-                  labelText: 'Jari-jari Bola',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.number,
-              ),
+            myTextField(
+              hintText: 'Jari-jari Bola',
+              isObscure: false,
+              textStyle: TextStyle(fontSize: 16, color: Colors.black),
+              rad: 5.0,
+              controller: jariJariController,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
