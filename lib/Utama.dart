@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:cubitflutter/Aritmetika/KalkulatorUI.dart';
+import 'package:cubitflutter/Pangkat/perpangkatanUI.dart';
 import 'package:cubitflutter/Reusables/myButton.dart';
 import 'package:cubitflutter/bagun_datar/bangundatar.dart';
 import 'package:cubitflutter/bangun_ruang/ui/kalkulator_screen.dart'; 
@@ -27,6 +28,10 @@ class _mainPageState extends State<mainPage> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => kalkulatorUI()));
   }
 
+  void _navigateToPangkat(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => PerpangkatanUI()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +55,7 @@ class _mainPageState extends State<mainPage> {
           ),
           Container(
             margin: EdgeInsets.all(5),
-            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Bilangan Pangkat" ,onPressed: () {},),
+            child: myButton(backgroundColor: Colors.black45, textColor: Colors.white, radius: 5,elevation: 0, textButton: "Bilangan Pangkat" ,onPressed: () {_navigateToPangkat(context);},),
           ),
           Expanded(child: Container()),
         ],
