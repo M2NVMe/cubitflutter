@@ -1,3 +1,5 @@
+import 'package:cubitflutter/Reusables/myButton.dart';
+import 'package:cubitflutter/Reusables/myTextfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubitbagundatar.dart';
@@ -29,41 +31,50 @@ class BagundatarForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Input for Persegi
-            TextField(
+            myTextField(
+              hintText: "Sisi Persegi",
+              isObscure: false,
+              textStyle: TextStyle(fontWeight: FontWeight.normal),
+              rad: 10,
               controller: sisiController,
-              decoration: InputDecoration(
-                labelText: 'Sisi Persegi',
-              ),
-              keyboardType: TextInputType.number,
             ),
             SizedBox(height: 16),
-            ElevatedButton(
+            myButton(
+              textButton: "Hitung Luas & Keliling Persegi",
+              backgroundColor: Colors.grey,
+              textColor: Colors.black,
+              radius: 5,
+              elevation: 0,
               onPressed: () {
                 final sisi = double.tryParse(sisiController.text) ?? 0;
                 context.read<BagundatarCubit>().hitungPersegi(sisi);
               },
-              child: Text('Hitung Luas & Keliling Persegi'),
             ),
             SizedBox(height: 16),
 
             // Input for Persegi Panjang
-            TextField(
+            myTextField(
+              hintText: "Panjang Persegi Panjang",
+              isObscure: false,
+              textStyle: TextStyle(fontWeight: FontWeight.normal),
+              rad: 10,
               controller: panjangController,
-              decoration: InputDecoration(
-                labelText: 'Panjang Persegi Panjang',
-              ),
-              keyboardType: TextInputType.number,
             ),
             SizedBox(height: 16),
-            TextField(
+            myTextField(
+              hintText: "Lebar Persegi Panjang",
+              isObscure: false,
+              textStyle: TextStyle(fontWeight: FontWeight.normal),
+              rad: 10,
               controller: lebarController,
-              decoration: InputDecoration(
-                labelText: 'Lebar Persegi Panjang',
-              ),
-              keyboardType: TextInputType.number,
             ),
             SizedBox(height: 16),
-            ElevatedButton(
+            myButton(
+              textButton: "Hitung Luas & Keliling Persegi Panjang",
+              backgroundColor: Colors.grey,
+              textColor: Colors.black,
+              radius: 5,
+              elevation: 0,
               onPressed: () {
                 final panjang = double.tryParse(panjangController.text) ?? 0;
                 final lebar = double.tryParse(lebarController.text) ?? 0;
@@ -71,25 +82,28 @@ class BagundatarForm extends StatelessWidget {
                     .read<BagundatarCubit>()
                     .hitungPersegiPanjang(panjang, lebar);
               },
-              child: Text('Hitung Luas & Keliling Persegi Panjang'),
             ),
             SizedBox(height: 16),
 
             // Input for Lingkaran
-            TextField(
+            myTextField(
+              hintText: "Jari Jari Lingkaran",
+              isObscure: false,
+              textStyle: TextStyle(fontWeight: FontWeight.normal),
+              rad: 10,
               controller: jariJariController,
-              decoration: InputDecoration(
-                labelText: 'Jari-jari Lingkaran',
-              ),
-              keyboardType: TextInputType.number,
             ),
             SizedBox(height: 16),
-            ElevatedButton(
+            myButton(
+              textButton: "Hitung Luas & Keliling Lingkaran",
+              backgroundColor: Colors.grey,
+              textColor: Colors.black,
+              radius: 5,
+              elevation: 0,
               onPressed: () {
                 final jariJari = double.tryParse(jariJariController.text) ?? 0;
                 context.read<BagundatarCubit>().hitungLingkaran(jariJari);
               },
-              child: Text('Hitung Luas & Keliling Lingkaran'),
             ),
             SizedBox(height: 16),
 
