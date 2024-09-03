@@ -1,6 +1,7 @@
 import 'package:cubitflutter/Aritmetika/KalkCubit.dart';
 import 'package:cubitflutter/Pangkat/perpangkatanCubit.dart';
 import 'package:cubitflutter/Utama.dart';
+import 'package:cubitflutter/bagundatar/cubitbagundatar.dart';
 import 'package:cubitflutter/bangun_ruang/cubit/bangun_ruang_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => BangunRuangCubit()),
         BlocProvider(create: (context) => Aritmatikcubit()),
-        BlocProvider(create: (context) => PerpangkatanCubit())
+        BlocProvider(create: (context) => PerpangkatanCubit()),
+        BlocProvider(create: (context) => BagundatarCubit())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
