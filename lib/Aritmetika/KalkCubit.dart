@@ -19,7 +19,7 @@ class Aritmatikcubit extends Cubit<String> {
         result = num1 * num2;
         break;
       case "/":
-        result = num2 != 0 ? num1 / num2 : 0; // Avoid division by zero
+        result = num2 != 0 ? num1 / num2 : 0;
         break;
       default:
         result = 0;

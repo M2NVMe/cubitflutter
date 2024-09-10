@@ -39,6 +39,7 @@ class _mainPageState extends State<mainPage> {
         title: Text("Calculator App"),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(child: Container()),
           Container(

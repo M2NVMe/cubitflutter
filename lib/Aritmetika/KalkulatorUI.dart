@@ -35,7 +35,7 @@ class kalkulatorUI extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               myButton(
-                backgroundColor: Colors.black45,
+                backgroundColor: Colors.indigo,
                 textColor: Colors.white,
                 radius: 5,
                 elevation: 0,
@@ -49,7 +49,7 @@ class kalkulatorUI extends StatelessWidget {
                 },
               ),
               myButton(
-                backgroundColor: Colors.black45,
+                backgroundColor: Colors.indigo,
                 textColor: Colors.white,
                 radius: 5,
                 elevation: 0,
@@ -63,7 +63,7 @@ class kalkulatorUI extends StatelessWidget {
                 },
               ),
               myButton(
-                backgroundColor: Colors.black45,
+                backgroundColor: Colors.indigo,
                 textColor: Colors.white,
                 radius: 5,
                 elevation: 0,
@@ -77,7 +77,7 @@ class kalkulatorUI extends StatelessWidget {
                 },
               ),
               myButton(
-                backgroundColor: Colors.black45,
+                backgroundColor: Colors.indigo,
                 textColor: Colors.white,
                 radius: 5,
                 elevation: 0,
@@ -92,12 +92,12 @@ class kalkulatorUI extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 35),
           BlocBuilder<Aritmatikcubit, String>(
             builder: (context, result) {
               return Text(
                 result.isEmpty ? "Result will be shown here" : result,
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, color: Colors.indigo),
               );
             },
           ),

@@ -13,7 +13,9 @@ class myTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10),
+
       child: TextField(
+        keyboardType: TextInputType.number,
         controller: controller,
         obscureText: isObscure,
         style: textStyle,
