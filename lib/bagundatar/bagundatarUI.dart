@@ -30,7 +30,6 @@ class BagundatarForm extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Input for Persegi
             myTextField(
               hintText: "Sisi Persegi",
               isObscure: false,
@@ -46,13 +45,12 @@ class BagundatarForm extends StatelessWidget {
               radius: 5,
               elevation: 0,
               onPressed: () {
-                final sisi = double.tryParse(sisiController.text) ?? 0;
-                context.read<BagundatarCubit>().hitungPersegi(sisi);
+                context
+                    .read<BagundatarCubit>()
+                    .hitungPersegi(sisiController.text);
               },
             ),
             SizedBox(height: 16),
-
-            // Input for Persegi Panjang
             myTextField(
               hintText: "Panjang Persegi Panjang",
               isObscure: false,
@@ -76,16 +74,13 @@ class BagundatarForm extends StatelessWidget {
               radius: 5,
               elevation: 0,
               onPressed: () {
-                final panjang = double.tryParse(panjangController.text) ?? 0;
-                final lebar = double.tryParse(lebarController.text) ?? 0;
-                context
-                    .read<BagundatarCubit>()
-                    .hitungPersegiPanjang(panjang, lebar);
+                context.read<BagundatarCubit>().hitungPersegiPanjang(
+                      panjangController.text,
+                      lebarController.text,
+                    );
               },
             ),
             SizedBox(height: 16),
-
-            // Input for Lingkaran
             myTextField(
               hintText: "Jari Jari Lingkaran",
               isObscure: false,
@@ -101,38 +96,19 @@ class BagundatarForm extends StatelessWidget {
               radius: 5,
               elevation: 0,
               onPressed: () {
-                final jariJari = double.tryParse(jariJariController.text) ?? 0;
-                context.read<BagundatarCubit>().hitungLingkaran(jariJari);
+                context
+                    .read<BagundatarCubit>()
+                    .hitungLingkaran(jariJariController.text);
               },
             ),
             SizedBox(height: 16),
-
-            // Result Display
-            BlocBuilder<BagundatarCubit, BagundatarState>(
+            BlocBuilder<BagundatarCubit, String>(
               builder: (context, state) {
-                if (state is BagundatarCalculated) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (state.luasPersegi != 0) ...[
-                        Text('Luas Persegi: ${state.luasPersegi}'),
-                        Text('Keliling Persegi: ${state.kelilingPersegi}'),
-                      ],
-                      if (state.luasPersegiPanjang != 0) ...[
-                        Text(
-                            'Luas Persegi Panjang: ${state.luasPersegiPanjang}'),
-                        Text(
-                            'Keliling Persegi Panjang: ${state.kelilingPersegiPanjang}'),
-                      ],
-                      if (state.luasLingkaran != 0) ...[
-                        Text('Luas Lingkaran: ${state.luasLingkaran}'),
-                        Text('Keliling Lingkaran: ${state.kelilingLingkaran}'),
-                      ],
-                    ],
-                  );
-                }
                 return Text(
-                    'Masukkan nilai untuk menghitung luas dan keliling');
+                  state.isNotEmpty
+                      ? state
+                      : 'Masukkan nilai untuk menghitung luas dan keliling',
+                );
               },
             ),
           ],
